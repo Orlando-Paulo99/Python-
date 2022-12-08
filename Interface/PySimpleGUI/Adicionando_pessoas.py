@@ -1,7 +1,7 @@
 import PySimpleGUI as sg
 class TelaPython:
 	#cor
-	sg.change_look_and_feel("Red")
+	sg.theme('DarkTeal12')
 	
 	def __init__(self):
 		#Criando o formato da tela
@@ -11,12 +11,14 @@ class TelaPython:
 				[sg.Checkbox("Facebook",key="face"),sg.Checkbox("Instagram",key="insta"),sg.Checkbox("Gmail",key="email")],
 				[sg.Text("Aceita Cartoes")],
 				[sg.Radio("sim","cartoes",key="aceita_c"),sg.Radio("não","cartoes",key="nao_aceita")],
+				[sg.Slider(range=(0,300),default_value=0,orientation="h",size=(15,20),key="slider_vel")],
 				[sg.Button("Enviar")],
 				[sg.Output(size=(30,20))]
 		]
 		#criando a tela
 		self.janela=sg.Window("Cadastro").layout(layout)
 		self.event,self.values=self.janela.Read()
+		self.janela.close()
 		
 		#Método para inicar o que estaá dentro da tel.OBS:deixando dentro de uma variavel
 	def iniciar():
@@ -31,6 +33,7 @@ class TelaPython:
 			aceitar_gmail=self.values["email"]
 			aceita_cartao=self.values["aceitq_c"]
 			nao_aceita_cartao= selfvalues["nao_aceita"]
+			velcidade_s=self.values["slider_vel"]
 		
 		print(f"nome {nome}")
 		print(f"idade{idade}")
@@ -39,6 +42,7 @@ class TelaPython:
 		print(f"Gmail {aceitatar_gmail}")
 		print(f"Aceita Cartão{aceita_cartao}")
 		print(f"Não aceita Cartão{nao_aceita_cartao}")
+		print(f"Velocidade {velocidade_s}")
 		
 		
 		
