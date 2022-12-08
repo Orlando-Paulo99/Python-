@@ -35,14 +35,14 @@ class TelaPython:
 			nao_aceita_cartao= selfvalues["nao_aceita"]
 			velcidade_s=self.values["slider_vel"]
 		
-		print(f"nome {nome}")
-		print(f"idade{idade}")
-		print(f" Facebook {aceitar_face}")
-		print(f"Instagram {aceitar_insta}")
-		print(f"Gmail {aceitatar_gmail}")
-		print(f"Aceita Cartão{aceita_cartao}")
-		print(f"Não aceita Cartão{nao_aceita_cartao}")
-		print(f"Velocidade {velocidade_s}")
+		        print(f"nome {nome}")
+		        print(f"idade{idade}")
+		        print(f" Facebook {aceitar_face}")
+		        print(f"Instagram {aceitar_insta}")
+		        print(f"Gmail {aceitatar_gmail}")
+		        print(f"Aceita Cartão{aceita_cartao}")
+		        print(f"Não aceita Cartão{nao_aceita_cartao}")
+		        print(f"Velocidade {velocidade_s}")
 		
 		
 		
