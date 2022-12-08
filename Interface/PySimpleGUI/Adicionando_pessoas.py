@@ -18,13 +18,17 @@ class TelaPython:
 		#criando a tela
 		self.janela=sg.Window("Cadastro").layout(layout)
 		self.event,self.values=self.janela.Read()
-		self.janela.close()
+		
 		
 		#Método para inicar o que estaá dentro da tel.OBS:deixando dentro de uma variavel
 	def iniciar():
 		#loop
 		while True:
-			self.button,self.values=self.janela.Read()
+	
+			
+			if self.event==WIN_CLOSED:
+				break
+		
 		
 			nome=self.values["nome_1"]
 			idade=self.values["idade_1"]
@@ -35,18 +39,17 @@ class TelaPython:
 			nao_aceita_cartao= selfvalues["nao_aceita"]
 			velcidade_s=self.values["slider_vel"]
 		
-		        print(f"nome {nome}")
-		        print(f"idade{idade}")
-		        print(f" Facebook {aceitar_face}")
-		        print(f"Instagram {aceitar_insta}")
-		        print(f"Gmail {aceitatar_gmail}")
-		        print(f"Aceita Cartão{aceita_cartao}")
-		        print(f"Não aceita Cartão{nao_aceita_cartao}")
-		        print(f"Velocidade {velocidade_s}")
+			print(f"nome {nome}")
+			print(f"idade{idade}")
+			print(f" Facebook {aceitar_face}")
+			print(f"Instagram {aceitar_insta}")
+			print(f"Gmail {aceitatar_gmail}")
+			print(f"Aceita Cartão{aceita_cartao}")
+			print(f"Não aceita Cartão{nao_aceita_cartao}")
+			print(f"Velocidade {velocidade_s}")
 		
 		
-		
-		
+#Instanciando o objeto	
 tela=TelaPython()
 tela.iniciar()
 
