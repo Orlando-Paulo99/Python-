@@ -3,17 +3,16 @@ def tela_inicial():
 		sg.theme("DarkRed")
 		layout=[
 			[sg.Text("Seja Bem-Vindo",size=(15,0))],
-			[sg.Button("Cadastro",key="cadas",size=(15,0))],
-			[sg.Button("Informações",key="lg",size=(15,0))],
-			[sg.Button("Contatos",key="cont",size=(15,0))],
-			[sg.Button("Redes sociais",key="redes",size=(15,0))]
+			[sg.Button("Cadastro",key="cadas",   size=(30,3))],
+			[sg.Button("Informações",key="lg",size=(30,3))],
+			[sg.Button("Contatos",key="cont",size=(30,3))],
+			[sg.Button("Redes sociais",key="redes",size=(30,4))]
 		
 		]
-		return sg.Window("principal",layout=layout,finalize=True)
+		return sg.Window("principal",layout=layout,finalize=True,size=(600,800))
 		
-
 def tela_cadastro():
-		sg.theme("DarkGreen")
+		sg.theme("DarkBlack")
 		layout=[
 				[sg.Text("Nome"),sg.Input(key="nome_1",size=(10,0))],
 				[sg.Text("Idade"),sg.Input(key="idade_1",size=(10,0))],
@@ -29,32 +28,33 @@ def tela_cadastro():
 		return sg.Window("Cadastro2",layout=layout,finalize=True)
 		
 def tela_info():
-		pass
+		layout=[
+						[sg.Radio("Cidade","cartoes",key="ci"),sg.Radio("Informacao","cartoes",key="inf")],
+				[sg.Radio("Pontos Históricos","ph",key="pont_h")],
+				
+				[sg.Button("Voltar"),sg.Button("Confirmar")]
+		]
+		return sg.Window("informacao1",layout=layout,finalize=True)
 		
-def tela_contatos():
-		pass
 		
-def tela_redes():
-		pass
+
+		
+
 		
 		
-jan_inicial,janela_cadastro=tela_inicial(),None
+jan_inicial,janela_cadastro, jan_info=tela_inicial(),None,None
 		
 while True:
 		window, event, values = sg.read_all_windows()
 		#Se o usuario querer sair da pagina principal sem erro
 		if window==tela_inicial and event==WIN_CLOSED :
 			break
-		#Se o usuario querer sair da tela de cadastro sem erro
+			
+			
+		##Eventos tela de Cadastro
 		if window==tela_cadastro and event==WIN_CLOSED:
 				break
-		
-		#Sair sem erro da tela informações
-	
-		#Sair sem erro da tela contatos
-		#Sair sem erro da tela Redes Sociais
-		
-		#Eventos Tela de Cadastro
+				
 		if window==jan_inicial and event=="cadas":
 			janela_cadastro=tela_cadastro()
 			jan_inicial.hide()
@@ -62,20 +62,15 @@ while True:
 		if window==janela_cadastro and event=="Voltar":
 		          janela_cadastro.hide()
 		          jan_inicial.un_hide()
-		if window==janela_cadastro and event=="Enviar":
-		          print(f"Nome {nome_1}")
-		          print(f"Idade {idade_1}")
-		          prinr(f"CPF {cpf}")
-		          print(f"Telefone {tel}")
-		          print(f" Endereço {ende}")
-		          
-		          
-		
-	
-		
+
+		#Eventos Tela de Informações
+		if window==jan_info and event==WIN_CLOSED:
+					break
 			
-		
-		
-		
-		
-	
+		if window==jan_inicial and event=="lg":
+			jan_info=tela_info()
+			jan_inicial.hide()
+			
+		if window==jan_info and event=="Voltar":
+			jan_info.hide()
+			jan_inicial.un_hide()
