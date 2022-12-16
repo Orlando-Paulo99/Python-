@@ -3,9 +3,11 @@ import PySimpleGUI as sg
 def tela_login():
 	sg.theme("DarkBrown")
 	layout=[
-			[sg.Text("Login"),sg.Input(key="login_1",size=(15,0))],
-			[sg.Text("Senha"),sg.Input(key="senha1",size=(15,0))],
-			[sg.Button("Entrar",key="enter")]
+			[sg.Text("Login"),sg.Input("",key="login",size=(15,0))],
+			[sg.Text("Senha"),sg.Input(key="senha",size=(15,0))],
+			[sg.Button("Entrar",key="enter")],
+			[sg.Text("",key="mensagem")]
+			
 	
 	]
 	return sg.Window("login",layout=layout,finalize=True)
@@ -27,16 +29,12 @@ def tela_inicial():
 def tela_cadastro():
 		sg.theme("DarkBlack")
 		layout=[
-				[sg.Text("Nome"),sg.Input(key="nome_1",size=(10,0))],
-				[sg.Text("Idade"),sg.Input(key="idade_1",size=(10,0))],
-				[sg.Text("CPF"),sg.Input(key="cpf",size=(10,0))],
-				[sg.Text("Telefone"),sg.Input(key="tel",size=(10,0))],
-				[sg.Text("Endereço"),sg.Input(key="ende",size=(10,0))],
-				
-				[sg.Button("Enviar")],
-				[sg.Output(size=(30,10))],
-				
-				[sg.Button("Voltar")]
+					[sg.Button("Voltar",size=(5,0))],
+					[sg.Text("Nome do Produto"),sg.Input("",key="dados",size=(10,5))],
+					[sg.Text("Valor"),sg.Input(key="valor_p",size=(10,5))],
+					[sg.Button("Resetar"),sg.Button("Confirmar")],
+					
+
 		]
 		return sg.Window("Cadastro2",layout=layout,finalize=True)
 
@@ -62,8 +60,10 @@ while True:
 			break
 		#Evento para ir para ir a outra tela após a tela de login
 		if window==jan_login and event=="enter":
-			jan_inicial=tela_inicial()
-			jan_login.hide()
+				jan_inicial=tela_inicial()
+				jan_login.hide()
+			
+
 			
 		
 		#Se o usuario querer sair da pagina principal sem erro
