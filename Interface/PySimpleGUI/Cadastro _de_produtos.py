@@ -17,17 +17,18 @@ def tela_option():
 	sg.theme("DarkBlue14")
 	layout=[
 			[sg.Button("Cadastrar Produto")],
-			[sg.Button("Verificar Produtos")]
+			[sg.Button("Verificar Produtos")],
+			[sg.Button("Desconectar")]
 	]
-	return sg.Window("Opção",layout=layout,finalize=True)
+	return sg.Window("Opção",layout=layout,finalize=True,size=(415,250))
 
 #FORMATO TELA DE CADASTRO DOS PRODUTOS
 def tela_cadastroProdutos():
 	sg.theme("DarkBlue5")
 	layout=[
 			[sg.Text("Produto")],
-			[sg.Input(size=(20,1))],
-			[sg.Text("Valor"),sg.Input(size=(10,1))],
+			[sg.Input(key="nome_produto",size=(20,1))],
+			[sg.Text("Valor"),sg.Input(key="valor_produto",size=(10,1))],
 			[sg.Button("Voltar"),sg.Button("Confirmar")]
 	]
 	return sg.Window("cadastro",layout=layout,finalize=True)
@@ -36,7 +37,7 @@ def tela_cadastroProdutos():
 def verificar_produtos():
 	sg.theme("DarkBrown")
 	layout=[
-			[sg.Output(size=(20,10))],
+			[sg.Output(key="saida",size=(30,10))],
 			[sg.Button("Voltar")]
 	]
 	return sg.Window("verificando",layout=layout,finalize=True)
@@ -76,7 +77,20 @@ while True:
 	#EVENTO PARA FECHAR A TELA DE PRODUTOS
 	if window==jan_cadastro and event==sg.WIN_CLOSED:
 		break
+
+	if window==jan_cadastro:
+		if event=="Confirmar":
+			 	nome_p=values["nome_produto"]
+			 	valor_p=values["valor_produto"]
+			 	jan_verificar["saida"].update(f"Nome do produto:{nome_p} valor:{valor_p}")
+			
 		
+		
+	
+	
+	
+	
+	
 	#EVENTOS VERIFICAR PRODUTOS
 	if window==jan_option and event=="Verificar Produtos":
 		jan_verificar=verificar_produtos()
@@ -86,3 +100,5 @@ while True:
 	if window==jan_verificar and event=="Voltar":
 		jan_verificar.hide()
 		jan_option.un_hide()
+
+
