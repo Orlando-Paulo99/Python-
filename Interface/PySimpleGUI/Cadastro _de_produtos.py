@@ -36,6 +36,7 @@ def tela_cadastroProdutos():
 #FORMATO TELA DE VERIFICAÇÃO	
 def verificar_produtos():
 	sg.theme("DarkBrown")
+	lista_produtos=[]
 	layout=[
 			[sg.Output(key="saida",size=(30,10))],
 			[sg.Button("Voltar")]
@@ -78,11 +79,21 @@ while True:
 	if window==jan_cadastro and event==sg.WIN_CLOSED:
 		break
 
-	if window==jan_cadastro:
+	'''if window==jan_cadastro:
 		if event=="Confirmar":
 			 	nome_p=values["nome_produto"]
 			 	valor_p=values["valor_produto"]
-			 	jan_verificar["saida"].update(f"Nome do produto:{nome_p} valor:{valor_p}")
+			 	jan_verificar["saida"].update(f"Nome do produto:{nome_p} \nvalor:{valor_p}")'''
+		 	
+	if window==jan_cadastro and event=="Confirmar":
+			varif=tela_cadastroProdutos()
+			
+			window["saida"].update("")
+			verif.get_tela_cadastroProdutos()
+			
+			
+			
+			
 			
 		
 		
@@ -93,8 +104,8 @@ while True:
 	
 	#EVENTOS VERIFICAR PRODUTOS
 	if window==jan_option and event=="Verificar Produtos":
-		jan_verificar=verificar_produtos()
-		jan_option.hide()
+			jan_verificar=verificar_produtos()
+			jan_option.hide()
 		
 	#SAINDO DA TELA DE VERIFICAÇÃO PARA TELA OPTION
 	if window==jan_verificar and event=="Voltar":
@@ -102,3 +113,4 @@ while True:
 		jan_option.un_hide()
 
 
+		
